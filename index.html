@@ -177,6 +177,22 @@ nav.scrolled{background:rgba(0,0,0,0.92);box-shadow:0 4px 30px rgba(0,0,0,0.5)}
 .proj-link{padding:6px 16px;border:1px solid var(--border);border-radius:var(--rs);color:var(--dim);text-decoration:none;font-size:.8rem;transition:var(--t)}
 .proj-link:hover{border-color:#fff;color:#fff}
 
+/* ===== GITHUB PROJECTS ===== */
+.gh-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:25px}
+.gh-card{position:relative;overflow:hidden}
+.gh-card .gh-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.gh-card .gh-icon{width:44px;height:44px;border:1px solid var(--border);border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--t)}
+.gh-card .gh-icon svg{width:22px;height:22px;fill:#fff}
+.gh-card:hover .gh-icon{border-color:#fff;background:rgba(255,255,255,0.05)}
+.gh-card h3{font-size:1.05rem;font-weight:700}
+.gh-card .gh-desc{color:var(--dim);font-size:.88rem;line-height:1.7;margin-bottom:16px}
+.gh-card .gh-meta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.gh-card .gh-meta span{font-size:.75rem;color:var(--dim);display:flex;align-items:center;gap:5px}
+.gh-card .gh-meta .gh-dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.gh-card .gh-btn{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border:1px solid var(--border);border-radius:var(--rs);color:var(--soft);text-decoration:none;font-size:.82rem;font-weight:500;transition:var(--t)}
+.gh-card .gh-btn:hover{border-color:#fff;color:#fff;background:rgba(255,255,255,0.04);transform:translateY(-2px)}
+.gh-card .gh-btn svg{width:16px;height:16px;fill:currentColor}
+
 /* ===== RESEARCH ===== */
 .research-hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-bottom:40px}
 .research-info h3{font-size:1.3rem;font-weight:700;margin-bottom:14px}
@@ -475,6 +491,47 @@ footer p{font-size:.78rem;color:var(--dim);letter-spacing:.5px}
             </div>
 
         </div>
+
+        <!-- GITHUB PROJECTS -->
+        <h3 style="text-align:center;margin:60px 0 30px;font-size:1.1rem;color:var(--soft);font-weight:600">GitHub Repositories</h3>
+        <div class="gh-grid">
+
+            <!-- ====== CARD TEMPLATE — Copy this block to add more projects ====== -->
+            <div class="card gh-card reveal">
+                <div class="gh-header">
+                    <div class="gh-icon"><svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></div>
+                    <h3>portfolio-osama-wazir</h3>
+                </div>
+                <p class="gh-desc">My personal data analyst portfolio — built with HTML, CSS & JavaScript. Showcases projects, research, certifications, and skills.</p>
+                <div class="gh-meta">
+                    <span><span class="gh-dot" style="background:#f1e05a"></span> HTML / CSS / JS</span>
+                </div>
+                <a href="https://github.com/Osamawazir/portfolio-osama-wazir" target="_blank" class="gh-btn">
+                    <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                    View on GitHub
+                </a>
+            </div>
+            <!-- ====== END CARD TEMPLATE ====== -->
+
+            <!--
+                TO ADD MORE GITHUB PROJECTS:
+                1. Copy everything between "CARD TEMPLATE" comments above
+                2. Paste it below
+                3. Change the <h3> title, <p class="gh-desc"> description,
+                   the language dot color, language name, and the <a href="..."> link
+                4. CSS will apply automatically!
+
+                Language dot colors:
+                  Python = #3572A5
+                  R = #198CE7
+                  JavaScript = #f1e05a
+                  HTML = #e34c26
+                  Jupyter = #DA5B0B
+                  Power BI = #F2C811
+            -->
+
+        </div>
+
     </div>
 </section>
 
@@ -670,8 +727,6 @@ footer p{font-size:.78rem;color:var(--dim);letter-spacing:.5px}
                 <a href="mailto:uukhan44@gmail.com" class="btn btn-filled"><span>Send Email</span></a>
                 <br><br>
                 <a href="assets/resume/osama-wazir-resume.pdf" target="_blank" class="btn"><span>📄 Download Resume</span></a>
-                <br><br>
-                <a href="assets/certificates/osama-wazir-cv.pdf" target="_blank" class="btn"><span>📋 Download CV</span></a>
             </div>
         </div>
     </div>
