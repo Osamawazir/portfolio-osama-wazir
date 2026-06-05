@@ -399,6 +399,7 @@ footer p{font-size:.78rem;color:var(--dim);letter-spacing:.5px}
                 <h3>Bachelor of Information Technology</h3>
                 <p>University of Malakand</p>
                 <span class="edu-year">2025</span>
+                <a href="assets/certificates/bsit-degree.pdf" target="_blank" style="display:inline-block;margin-top:10px;padding:5px 14px;border:1px solid var(--border);border-radius:50px;font-size:.72rem;color:var(--dim);text-decoration:none;transition:var(--t);letter-spacing:.5px" onmouseover="this.style.borderColor='#fff';this.style.color='#fff'" onmouseout="this.style.borderColor='';this.style.color=''">📄 View Degree</a>
             </div>
             <div class="card edu-card reveal rd1">
                 <div class="edu-icon">⚡</div>
@@ -630,6 +631,11 @@ footer p{font-size:.78rem;color:var(--dim);letter-spacing:.5px}
                 <h4>DAE Electrical — Marks Certificate</h4>
                 <p>KPK Board of Technical Education, Peshawar</p>
             </div>
+            <div class="card cert-card reveal rd3" onclick="openLB(12)">
+                <img src="assets/certificates/student-card.jpg" alt="Student Card" class="cert-img">
+                <h4>Student Identity Card</h4>
+                <p>University of Malakand — BSIT Student</p>
+            </div>
         </div>
     </div>
 </section>
@@ -664,6 +670,8 @@ footer p{font-size:.78rem;color:var(--dim);letter-spacing:.5px}
                 <a href="mailto:uukhan44@gmail.com" class="btn btn-filled"><span>Send Email</span></a>
                 <br><br>
                 <a href="assets/resume/osama-wazir-resume.pdf" target="_blank" class="btn"><span>📄 Download Resume</span></a>
+                <br><br>
+                <a href="assets/certificates/osama-wazir-cv.pdf" target="_blank" class="btn"><span>📋 Download CV</span></a>
             </div>
         </div>
     </div>
@@ -743,7 +751,8 @@ const lbImages=[
     {src:'assets/certificates/ai-robotics-workshop.jpg',cap:'AI & Robotics Workshop — University of Malakand'},
     {src:'assets/certificates/secondary-school-certificate.jpeg',cap:'Secondary School Certificate — BISE Swat'},
     {src:'assets/certificates/detailed-marks-certificate.jpeg',cap:'SSC Detailed Marks — BISE Swat'},
-    {src:'assets/certificates/dae-electrical-certificate.jpeg',cap:'DAE Electrical — KPK Board of Technical Education'}
+    {src:'assets/certificates/dae-electrical-certificate.jpeg',cap:'DAE Electrical — KPK Board of Technical Education'},
+    {src:'assets/certificates/student-card.jpg',cap:'Student Identity Card — University of Malakand'}
 ];
 let cli=0;
 function openLB(i){cli=i;document.getElementById('lbImg').src=lbImages[i].src;document.getElementById('lbCap').textContent=lbImages[i].cap;document.getElementById('lb').classList.add('active');document.body.style.overflow='hidden'}
