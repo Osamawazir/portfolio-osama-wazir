@@ -71,7 +71,8 @@ section{padding:100px 0;position:relative}
     border:1px solid var(--border);
     border-radius:var(--r);
     padding:30px;
-    transition:var(--t);
+    transition: transform 0.15s ease-out, border-color var(--t), background var(--t), box-shadow var(--t);
+    transform-style: preserve-3d;
     position:relative;
     overflow:hidden;
 }
@@ -89,12 +90,14 @@ section{padding:100px 0;position:relative}
     transition: opacity 0.5s ease;
 }
 .card:hover{
-    transform:translateY(-6px);
     border-color:var(--border-h);
     background:var(--card-hover);
-    box-shadow:0 20px 60px rgba(0,0,0,0.6), 0 0 40px rgba(var(--primary-rgb), 0.03);
+    box-shadow:0 25px 65px rgba(0,0,0,0.65), 0 0 50px rgba(var(--primary-rgb), 0.05);
 }
 .card:hover::before{opacity:1}
+.card > * {
+    transform: translateZ(20px);
+}
 
 /* ===== BUTTONS ===== */
 .btn{
@@ -531,7 +534,8 @@ footer p{font-size:.78rem;color:var(--dim);letter-spacing:.5px}
                 <span class="edu-year">2025</span>
                 <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
                     <a href="assets/certificates/bsit-degree.pdf" target="_blank" class="edu-btn">📄 View Degree</a>
-                    <a href="assets/certificates/osama wazir transcript.png" target="_blank" class="edu-btn">📊 View Transcript</a>
+                    <a href="assets/certificates/osama-wazir-transcript.png" target="_blank" class="edu-btn">📊 View Transcript</a>
+                    <a href="assets/research/papers/bachelors-thesis.pdf" target="_blank" class="edu-btn">📚 View Thesis</a>
                 </div>
             </div>
             <div class="card edu-card reveal rd1">
@@ -539,6 +543,9 @@ footer p{font-size:.78rem;color:var(--dim);letter-spacing:.5px}
                 <h3>DAE Electrical Technology</h3>
                 <p>Vision Polytechnic Institute, Thana</p>
                 <span class="edu-year">2019</span>
+                <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+                    <a href="assets/certificates/dae-electrical-certificate.jpeg" target="_blank" class="edu-btn">📄 View Degree</a>
+                </div>
             </div>
             <div class="card edu-card reveal rd2">
                 <div class="edu-icon">📚</div>
@@ -811,7 +818,7 @@ footer p{font-size:.78rem;color:var(--dim);letter-spacing:.5px}
                 <p>University of Malakand — BSIT Student</p>
             </div>
             <div class="card cert-card reveal rd4" onclick="openLB(13)">
-                <img src="assets/certificates/osama wazir transcript.png" alt="Academic Transcript" class="cert-img">
+                <img src="assets/certificates/osama-wazir-transcript.png" alt="Academic Transcript" class="cert-img">
                 <h4>Academic Transcript</h4>
                 <p>University of Malakand — Bachelor of Information Technology</p>
             </div>
@@ -973,7 +980,7 @@ const lbImages=[
     {src:'assets/certificates/detailed-marks-certificate.jpeg',cap:'SSC Detailed Marks — BISE Swat'},
     {src:'assets/certificates/dae-electrical-certificate.jpeg',cap:'DAE Electrical — KPK Board of Technical Education'},
     {src:'assets/certificates/student-card.jpg',cap:'Student Identity Card — University of Malakand'},
-    {src:'assets/certificates/osama wazir transcript.png',cap:'Academic Transcript — University of Malakand'}
+    {src:'assets/certificates/osama-wazir-transcript.png',cap:'Academic Transcript — University of Malakand'}
 ];
 let cli=0;
 function openLB(i){cli=i;document.getElementById('lbImg').src=lbImages[i].src;document.getElementById('lbCap').textContent=lbImages[i].cap;document.getElementById('lb').classList.add('active');document.body.style.overflow='hidden'}
@@ -1013,12 +1020,34 @@ window.addEventListener('scroll', () => {
     }
 });
 
-/* ===== CARD SPOTLIGHT HOVER EFFECT ===== */
+/* ===== CARD 3D TILT & SPOTLIGHT HOVER EFFECT ===== */
 document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
-        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
-        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        // Calculate tilt angles based on mouse position
+        const xc = rect.width / 2;
+        const yc = rect.height / 2;
+        const tiltX = (yc - y) / 12; // Max tilt ~8 degrees
+        const tiltY = (x - xc) / 12;
+        
+        // Apply transform style
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-5px)`;
+        
+        // Update spotlight position
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+    });
+    
+    card.addEventListener('mouseenter', () => {
+        card.style.transition = 'transform 0.1s ease-out, border-color var(--t), background var(--t), box-shadow var(--t)';
+    });
+    
+    card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.5s ease, border-color var(--t), background var(--t), box-shadow var(--t)';
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
     });
 });
 </script>
